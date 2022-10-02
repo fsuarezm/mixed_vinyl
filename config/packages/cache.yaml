@@ -1,6 +1,9 @@
+parameters:
+    cache_adapter: cache.adapter.filesystem
+
 framework:
     cache:
-        app: cache.adapter.filesystem
+        app: '%cache_adapter%'
         # Unique name of your app: used to compute stable namespaces for cache keys.
         #prefix_seed: your_vendor_name/app_name
 
@@ -20,6 +23,5 @@ framework:
             #my.dedicated.cache: null
 
 when@dev:
-    framework:
-        cache:
-            app: cache.adapter.array
+    parameters:
+        cache_adapter: cache.adapter.array
